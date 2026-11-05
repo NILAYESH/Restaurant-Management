@@ -1,0 +1,59 @@
+<section class="page-shell">
+  <div class="toolbar">
+    <div>
+      <p class="eyebrow">Floor plan</p>
+      <h2>Table management</h2>
+    </div>
+  </div>
+
+  <div class="layout-grid">
+    <div class="panel grid-panel">
+      <div class="table-grid">
+        <button
+          type="button"
+          class="table-card"
+          *ngFor="let table of tables()"
+          [class.active]="selectedTable()?.id === table.id"
+          (click)="selectTable(table)"
+        >
+          <div class="table-header">
+            <span>Table {{ table.tableNumber }}</span>
+            <app-status-badge [status]="table.status"></app-status-badge>
+          </div>
+          <strong>{{ table.capacity }} seats</strong>
+          <small>{{ getCurrentReservation(table) }}</small>
+        </button>
+      </div>
+    </div>
+
+    <aside class="panel detail-panel" *ngIf="selectedTable() as selected">
+      <p class="eyebrow">Selected table</p>
+      <h3>Table {{ selected.tableNumber }}</h3>
+      <div class="detail-grid">
+        <div>
+          <span>Identifier</span>
+          <strong>{{ selected.id }}</strong>
+        </div>
+        <div>
+          <span>Capacity</span>
+          <strong>{{ selected.capacity }} seats</strong>
+        </div>
+        <div>
+          <span>Status</span>
+          <app-status-badge [status]="selected.status"></app-status-badge>
+        </div>
+        <div>
+          <span>Reservation</span>
+          <strong>{{ getCurrentReservation(selected) }}</strong>
+        </div>
+      </div>
+
+      <label class="field">
+        <span>Update status</span>
+        <select [value]="selected.status" (change)="updateSelectedStatus($any($event.target).value)">
+          <option *ngFor="let status of tableStatusOptions" [value]="status">{{ status }}</option>
+        </select>
+      </label>
+    </aside>
+  </div>
+</section>

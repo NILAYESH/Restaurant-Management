@@ -1,0 +1,10 @@
+<div class="modal-backdrop" *ngIf="visible" (click)="onDismiss()">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="confirm-title" (click)="$event.stopPropagation()">
+    <h3 id="confirm-title">{{ title }}</h3>
+    <p>{{ message }}</p>
+    <div class="modal-actions">
+      <button type="button" class="secondary-button" (click)="onDismiss()">Cancel</button>
+      <button type="button" class="danger-button" (click)="onConfirm()">{{ confirmLabel }}</button>
+    </div>
+  </div>
+</div>

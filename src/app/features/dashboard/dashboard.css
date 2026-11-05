@@ -1,0 +1,265 @@
+.page-shell {
+  padding: 28px 40px 36px;
+}
+
+.welcome-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 26px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #a5734f;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0 0 8px;
+  color: #182121;
+  font-size: clamp(30px, 3vw, 42px);
+  letter-spacing: -0.07em;
+}
+
+h1 span {
+  color: #d39b63;
+}
+
+.welcome-copy {
+  margin: 0;
+  color: #68716d;
+}
+
+.primary-button {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  border: none;
+  border-radius: 10px;
+  background: #2d3f3d;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.panel {
+  padding: 22px 20px 18px;
+  border: 1px solid #efeae3;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(24, 29, 28, 0.04);
+}
+
+.panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.panel-heading h2 {
+  margin: 0 0 4px;
+  font-size: 1.15rem;
+}
+
+.panel-subtitle {
+  margin: 0;
+  color: #7a807b;
+  font-size: 12px;
+}
+
+.reservation-list {
+  display: grid;
+  gap: 12px;
+}
+
+.reservation-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid #f0eee9;
+  border-radius: 12px;
+  background: #fafaf8;
+}
+
+.guest-block {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.guest-avatar {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 50%;
+  background: #f0e0ce;
+  color: #1f2a2d;
+  font-weight: 700;
+}
+
+.guest-block strong,
+.schedule-item strong,
+.recent strong {
+  display: block;
+  color: #1a2527;
+}
+
+.guest-block span,
+.meta-block,
+.recent span,
+.schedule-item p {
+  color: #6d7570;
+  font-size: 12px;
+}
+
+.meta-block {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.table-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(61, 109, 94, 0.1);
+  color: #1c5b4d;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.recent {
+  grid-template-columns: 1fr auto;
+}
+
+.status-text {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #5c6d76;
+}
+
+.schedule-list {
+  display: grid;
+  gap: 12px;
+}
+
+.schedule-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 10px;
+  border: 1px solid #f0eee9;
+  border-radius: 12px;
+  background: #fafaf8;
+}
+
+.schedule-item p {
+  margin: 3px 0 0;
+}
+
+.distribution-list {
+  display: grid;
+  gap: 14px;
+}
+
+.distribution-item {
+  display: grid;
+  gap: 8px;
+}
+
+.label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #1b2627;
+  font-size: 13px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #f1eee9;
+}
+
+.progress-bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #d39b63, #e6ba7e);
+}
+
+.empty-state {
+  margin: 0;
+  color: #6a716d;
+  font-size: 14px;
+}
+
+@media (max-width: 1180px) {
+  .stats-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .page-shell {
+    padding: 18px 20px 28px;
+  }
+
+  .dashboard-grid,
+  .lower-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .welcome-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .reservation-row,
+  .schedule-item {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

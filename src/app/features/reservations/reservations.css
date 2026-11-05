@@ -1,0 +1,254 @@
+.page-shell {
+  padding: 30px 32px 36px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.toolbar-text h2 {
+  margin: 0 0 8px;
+  color: #192425;
+  font-size: clamp(24px, 2.4vw, 30px);
+  letter-spacing: -0.08em;
+}
+
+.toolbar-text p {
+  margin: 0;
+  color: #69736f;
+}
+
+.primary-button,
+.secondary-button,
+.mini-button {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary-button {
+  padding: 0 18px;
+  background: #2c403b;
+  color: #fff;
+}
+
+.secondary-button {
+  min-width: 96px;
+  padding: 0 14px;
+  background: #edf0ee;
+  color: #2e3633;
+}
+
+.panel {
+  padding: 20px;
+  border: 1px solid #efeae3;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 24px rgba(18, 21, 21, 0.03);
+}
+
+.filter-panel {
+  margin-bottom: 18px;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(160px, 1fr)) auto;
+  gap: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  color: #586360;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid #ebdfd1;
+  border-radius: 10px;
+  background: #fffdf9;
+  color: #1a2527;
+  font: inherit;
+}
+
+.field textarea {
+  min-height: 92px;
+  padding-top: 10px;
+  resize: vertical;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 14px 10px;
+  border-bottom: 1px solid #f1eee6;
+  text-align: left;
+  vertical-align: middle;
+}
+
+th {
+  color: #55615d;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.customer-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.customer-cell strong {
+  display: block;
+  margin-bottom: 3px;
+  color: #1b2627;
+}
+
+.customer-cell small {
+  color: #65706d;
+}
+
+.customer-avatar {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border-radius: 50%;
+  background: #efdfc7;
+  color: #1c2a2d;
+  font-weight: 700;
+}
+
+.action-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mini-button {
+  min-height: 32px;
+  padding: 0 10px;
+  background: #edf1f1;
+  color: #2d3a3a;
+}
+
+.mini-button.warn {
+  background: rgba(175, 137, 52, 0.12);
+  color: #8a6721;
+}
+
+.mini-button.danger {
+  background: rgba(165, 53, 53, 0.12);
+  color: #a03737;
+}
+
+.empty-state {
+  margin-top: 18px;
+  color: #5d6663;
+  font-size: 14px;
+}
+
+.form-panel {
+  margin-top: 18px;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.panel-heading h3 {
+  margin: 0 0 4px;
+  color: #1a2527;
+}
+
+.panel-subtitle {
+  margin: 0;
+  color: #7a807b;
+  font-size: 12px;
+}
+
+.reservation-form {
+  display: grid;
+  gap: 18px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.error-message {
+  margin: 0;
+  color: #a03939;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@media (max-width: 980px) {
+  .filters,
+  .form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    padding: 18px 16px 32px;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filters,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,45 @@
+<section class="page-shell">
+  <div class="toolbar">
+    <div>
+      <p class="eyebrow">Settings</p>
+      <h2>Restaurant configuration</h2>
+    </div>
+  </div>
+
+  <div class="panel settings-panel">
+    <form [formGroup]="settingsForm" (ngSubmit)="saveSettings()" class="settings-form">
+      <label class="field">
+        <span>Restaurant name</span>
+        <input type="text" formControlName="restaurantName" />
+      </label>
+      <label class="field">
+        <span>Contact number</span>
+        <input type="tel" formControlName="contactNumber" />
+      </label>
+      <label class="field">
+        <span>Email</span>
+        <input type="email" formControlName="email" />
+      </label>
+      <label class="field">
+        <span>Opening time</span>
+        <input type="time" formControlName="openingTime" />
+      </label>
+      <label class="field">
+        <span>Closing time</span>
+        <input type="time" formControlName="closingTime" />
+      </label>
+      <label class="field">
+        <span>Default reservation duration</span>
+        <input type="number" min="30" step="15" formControlName="defaultReservationDuration" />
+      </label>
+      <label class="field">
+        <span>Cleaning buffer (minutes)</span>
+        <input type="number" min="0" step="15" formControlName="cleaningBufferMinutes" />
+      </label>
+
+      <div class="button-row">
+        <button type="submit" class="primary-button">Save settings</button>
+      </div>
+    </form>
+  </div>
+</section>

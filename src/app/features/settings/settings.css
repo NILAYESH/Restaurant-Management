@@ -1,0 +1,81 @@
+.page-shell {
+  padding: 28px 32px 36px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #a77b57;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin: 0;
+  color: #1b2527;
+}
+
+.toolbar {
+  margin-bottom: 18px;
+}
+
+.panel {
+  padding: 24px;
+  border: 1px solid #efeae3;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 24px rgba(17, 22, 22, 0.04);
+}
+
+.settings-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  color: #596560;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.field input {
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid #ebdfd1;
+  border-radius: 10px;
+  background: #fffdf9;
+  color: #1a2527;
+  font: inherit;
+}
+
+.button-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  grid-column: 1 / -1;
+}
+
+.primary-button {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  border: none;
+  border-radius: 10px;
+  background: #2d403d;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 760px) {
+  .settings-form {
+    grid-template-columns: 1fr;
+  }
+}

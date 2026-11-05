@@ -1,0 +1,21 @@
+<aside class="sidebar" aria-label="Main navigation">
+  <a class="brand" routerLink="/dashboard" aria-label="Go to dashboard">
+    <span class="brand-mark" aria-hidden="true">s.</span>
+    <span class="brand-name">saffron<span>.</span></span>
+  </a>
+
+  <p class="nav-caption">WORKSPACE</p>
+  <nav class="main-nav" aria-label="Workspace navigation">
+    <a
+      *ngFor="let item of navItems"
+      class="nav-link"
+      [routerLink]="item.path"
+      routerLinkActive="nav-link-active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [attr.aria-current]="currentRoute === item.path ? 'page' : null"
+    >
+      <span class="nav-icon" aria-hidden="true">{{ item.icon }}</span>
+      <span>{{ item.label }}</span>
+    </a>
+  </nav>
+</aside>

@@ -1,0 +1,56 @@
+<section class="page-shell">
+  <div class="toolbar">
+    <div>
+      <p class="eyebrow">Availability</p>
+      <h2>Find suitable tables</h2>
+    </div>
+  </div>
+
+  <div class="panel availability-panel">
+    <form [formGroup]="availabilityForm" class="availability-form" (ngSubmit)="checkAvailability()">
+      <label class="field">
+        <span>Reservation date</span>
+        <input type="date" formControlName="date" />
+      </label>
+      <label class="field">
+        <span>Reservation time</span>
+        <input type="time" formControlName="startTime" />
+      </label>
+      <label class="field">
+        <span>Guest count</span>
+        <input type="number" min="1" formControlName="guestCount" />
+      </label>
+      <label class="field">
+        <span>Duration (minutes)</span>
+        <input type="number" min="30" step="15" formControlName="durationMinutes" />
+      </label>
+      <button type="submit" class="primary-button">Check availability</button>
+    </form>
+  </div>
+
+  <div class="panel results-panel">
+    <div class="panel-heading">
+      <div>
+        <h3>Recommended tables</h3>
+        <p>Tables meeting seating capacity, timing, and maintenance rules.</p>
+      </div>
+    </div>
+
+    <div *ngIf="availableTables().length; else noAvailability" class="results-grid">
+      <article class="table-result" *ngFor="let table of availableTables()">
+        <div class="result-head">
+          <strong>Table {{ table.tableNumber }}</strong>
+          <app-status-badge [status]="table.status"></app-status-badge>
+        </div>
+        <div class="meta-list">
+          <span>{{ table.capacity }} seats</span>
+          <span>{{ table.id }}</span>
+        </div>
+      </article>
+    </div>
+
+    <ng-template #noAvailability>
+      <p class="empty-state">No tables are available for the selected slot and guest count.</p>
+    </ng-template>
+  </div>
+</section>

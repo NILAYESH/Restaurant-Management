@@ -1,0 +1,111 @@
+<section class="page-shell">
+  <div class="welcome-row">
+    <div>
+      <p class="eyebrow">{{ todayDate | date: 'EEEE, MMMM d' }}</p>
+      <h1>Good evening, Alex <span aria-hidden="true">✳</span></h1>
+      <p class="welcome-copy">{{ settings().restaurantName }} is ready for service.</p>
+    </div>
+    <a class="primary-button" routerLink="/reservations">+ New reservation</a>
+  </div>
+
+  <section class="stats-grid" aria-label="Restaurant summary cards">
+    <app-stat-card label="Total Reservations" [value]="reservations().length" footnote="All recorded bookings" icon="▤"></app-stat-card>
+    <app-stat-card label="Today's Reservations" [value]="todayReservations().length" footnote="Booked for today" icon="✓"></app-stat-card>
+    <app-stat-card label="Available Tables" [value]="availableTables().length" [footnote]="'Ready for seating'" icon="▦"></app-stat-card>
+    <app-stat-card label="Occupied Tables" [value]="occupiedTables().length" footnote="Currently in use" icon="◔"></app-stat-card>
+    <app-stat-card label="Cancelled Reservations" [value]="cancelledReservations()" footnote="Closed bookings" icon="✕"></app-stat-card>
+    <app-stat-card label="Total Guests Expected" [value]="totalGuestsExpected()" footnote="Across all reservations" icon="♧"></app-stat-card>
+  </section>
+
+  <div class="dashboard-grid">
+    <section class="panel">
+      <div class="panel-heading">
+        <div>
+          <h2>Upcoming reservations</h2>
+          <p class="panel-subtitle">Next arrivals across the floor.</p>
+        </div>
+      </div>
+
+      <div class="reservation-list">
+        <article class="reservation-row" *ngFor="let reservation of upcomingReservations()">
+          <div class="guest-block">
+            <span class="guest-avatar" aria-hidden="true">{{ reservation.customerName.charAt(0) }}</span>
+            <div>
+              <strong>{{ reservation.customerName }}</strong>
+              <span>{{ reservation.guestCount }} guests</span>
+            </div>
+          </div>
+          <div class="meta-block">
+            <span>{{ formatDate(reservation.date) }}</span>
+            <span>{{ formatTime(reservation.startTime) }}</span>
+          </div>
+          <span class="table-tag">Table {{ reservation.tableId }}</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading">
+        <div>
+          <h2>Recent reservations</h2>
+          <p class="panel-subtitle">Latest activity at a glance.</p>
+        </div>
+      </div>
+
+      <div class="reservation-list compact">
+        <article class="reservation-row recent" *ngFor="let reservation of recentReservations()">
+          <div>
+            <strong>{{ reservation.customerName }}</strong>
+            <span>{{ reservation.date }}</span>
+          </div>
+          <span class="status-text">{{ reservation.status }}</span>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <div class="dashboard-grid lower-grid">
+    <section class="panel">
+      <div class="panel-heading">
+        <div>
+          <h2>Today's reservation schedule</h2>
+          <p class="panel-subtitle">Service flow for today.</p>
+        </div>
+      </div>
+
+      <div class="schedule-list" *ngIf="todayReservations().length; else noReservations">
+        <article class="schedule-item" *ngFor="let reservation of todayReservations()">
+          <div>
+            <strong>{{ reservation.customerName }}</strong>
+            <p>{{ reservation.guestCount }} guests · Table {{ reservation.tableId }}</p>
+          </div>
+          <span>{{ formatTime(reservation.startTime) }}</span>
+        </article>
+      </div>
+      <ng-template #noReservations>
+        <p class="empty-state">No reservations are scheduled for today.</p>
+      </ng-template>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading">
+        <div>
+          <h2>Reservation status distribution</h2>
+          <p class="panel-subtitle">Summary by status.</p>
+        </div>
+      </div>
+
+      <div class="distribution-list">
+        <div class="distribution-item" *ngFor="let status of statusKeys">
+          <div class="label-row">
+            <span>{{ status }}</span>
+            <strong>{{ statusSummary()[status] }}</strong>
+          </div>
+          <div class="progress-bar">
+            <span [style.width.%]="getProgressPercentage(status)"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
